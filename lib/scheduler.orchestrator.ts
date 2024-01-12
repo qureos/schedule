@@ -7,6 +7,7 @@ import { CronCallback, CronJob, CronJobParams } from 'cron';
 import { v4 } from 'uuid';
 import { CronOptions } from './decorators/cron.decorator';
 import { SchedulerRegistry } from './scheduler.registry';
+import * as Sentry from '@sentry/node';
 
 type TargetHost = { target: Function };
 type TimeoutHost = { timeout: number };
@@ -27,7 +28,7 @@ export class SchedulerOrchestrator
   private readonly timeouts: Record<string, TimeoutOptions> = {};
   private readonly intervals: Record<string, IntervalOptions> = {};
 
-  constructor(private readonly schedulerRegistry: SchedulerRegistry) {}
+  constructor(private readonly schedulerRegistry: SchedulerRegistry) { }
 
   onApplicationBootstrap() {
     this.mountTimeouts();
@@ -67,7 +68,8 @@ export class SchedulerOrchestrator
     const cronKeys = Object.keys(this.cronJobs);
     cronKeys.forEach((key) => {
       const { options, target } = this.cronJobs[key];
-      const cronJob = CronJob.from({
+      const CronJobWithCheckIn = Sentry.cron.instrumentCron(CronJob as any, key);
+      const cronJob = CronJobWithCheckIn.from({
         ...options,
         onTick: target as CronCallback<null, false>,
         start: !options.disabled
