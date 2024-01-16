@@ -1,5 +1,5 @@
 {
-  "name": "@nestjs/schedule",
+  "name": "qureos-schedule",
   "version": "4.0.0",
   "description": "Nest - modern, fast, powerful node.js web framework (@schedule)",
   "author": "Kamil Mysliwiec",
