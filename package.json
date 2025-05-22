@@ -1,6 +1,6 @@
 {
   "name": "qureos-schedule",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "Nest - modern, fast, powerful node.js web framework (@schedule)",
   "author": "Kamil Mysliwiec",
   "license": "MIT",
@@ -28,7 +28,7 @@
     "@nestjs/core": "10.3.0",
     "@nestjs/platform-express": "10.3.0",
     "@nestjs/testing": "10.3.0",
-    "@sentry/node": "^7.93.0",
+    "@sentry/node": "^9.22.0",
     "@types/jest": "29.5.11",
     "@types/node": "20.11.0",
     "@types/sinon": "17.0.3",
@@ -53,8 +53,8 @@
   "peerDependencies": {
     "@nestjs/common": "^8.0.0 || ^9.0.0 || ^10.0.0",
     "@nestjs/core": "^8.0.0 || ^9.0.0 || ^10.0.0",
-    "reflect-metadata": "^0.1.12",
-    "@sentry/node": "^7.93.0"
+    "@sentry/node": "^9.22.0",
+    "reflect-metadata": "^0.1.12"
   },
   "lint-staged": {
     "*.ts": [

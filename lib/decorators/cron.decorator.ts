@@ -14,7 +14,7 @@ export type CronOptions = {
   /**
    * Specify the name of your cron job. This will allow to inject your cron job reference through `@InjectCronRef`.
    */
-  name?: string;
+  name: string;
 
   /**
    * Specify the timezone for the execution. This will modify the actual time relative to your timezone. If the timezone is invalid, an error is thrown. You can check all timezones available at [Moment Timezone Website](http://momentjs.com/timezone/). Probably don't use both ```timeZone``` and ```utcOffset``` together or weird things may happen.
@@ -55,7 +55,7 @@ export type CronOptions = {
  */
 export function Cron(
   cronTime: CronJobParams['cronTime'],
-  options: CronOptions = {},
+  options: CronOptions,
 ): MethodDecorator {
   const name = options?.name;
   return applyDecorators(
